@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<script type='text/javascript'>
+    function do_submit()
+    {
+        var frm = document.forms[0];
+
+        alert("你刚刚输入了以下内容：\n\n" + frm.msg.value);
+        frm.msg.focus(); // 光标放到文本框中
+
+        return false;
+    }
+</script>
+<form method='post' onsubmit='return do_submit()'>
+    信息:<input type='text' size='40' name='msg' /><input type='submit' value='发送'>
+</form>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<% include header %>
+<div id="app" class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>部门管理</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a href="#" class="btn btn-primary" @click="create()"><i class="fa fa-pencil"></i> 新建</a>
+                    </div>
+                </div>
+
+                <div class="ibox-content">
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th style="width:60px;">#</th>
+                            <th>部门名称</th>
+                            <th style="width:280px;">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="(item, index) in items">
+                            <td>{{ index+1 }}</td>
+                            <td>{{ item.Name }}</td>
+                            <td>
+                                <a class="btn btn-info btn-xs"><i class="fa fa-edit">添加子部门</i> </a>
+                                <a class="btn btn-primary btn-xs"><i class="fa fa-code">移动</i></a>
+                                <a class="btn btn-success btn-xs" href="#" rel="external nofollow" rel="external nofollow"  @click="modify(item)"><i class="fa fa-pencil">编辑</i> </a>
+                                <a class="btn btn-danger btn-xs" href="#" @click="Delete(item.Id)"><i class="fa fa-terminal">删除</i></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <!--新增-->
+                    <div id="Added" style="padding:10px;display:none ;">
+                        <div class="col-md-11">
+                            <div class="form-group">
+                                <input type="hidden" v-model="item.Id" />
+                                <label class="col-sm-3 col-top control-label">姓名：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" v-model="modifys.Name" class="form-control" placeholder="请输入姓名">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--新增结束-->
+                    <!--编辑-->
+                    <div id="Editor" style="padding:10px;display:none ;">
+                        <div class="col-md-11">
+                            <div class="form-group">
+                                <input type="hidden" v-model="item.Id" />
+                                <label class="col-sm-3 col-top control-label">姓名：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" v-model="modifys.Name" class="form-control" placeholder="请输入姓名">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--编辑结束-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var data = {
+        items:[
+            { Id:'1', Name:'人事部' },
+            { Id:'2', Name:'科研部' },
+            { Id:'3', Name:'研发部' },
+            { Id:'4', Name:'财务部' },
+            { Id:'5', Name:'调研部' },
+            { Id:'6', Name:'销售部' },
+        ],
+        item:{},
+        modifys:{ Id:'', Name:''}
+    }
+    var app = new Vue({
+        el:'#app',
+        data:data,
+        methods:{
+            create: function () {
+                layer.open({
+                    type: 1,
+                    title: "新增",
+                    closeBtn: 0,
+                    shade: 0,
+                    shadeClose: false,
+                    area: ["500px", "430px"],
+                    skin: 'layui-layer-rim',
+                    content: $("#Added"),
+                    btn: ['保存', '取消'],
+                    zIndex: 990,
+
+                    cancel: function (index) {
+                        layer.close(index);
+                    }
+                });
+            },
+            modify: function (item) //编辑
+            {
+                layer.open({
+                    type: 1,
+                    title: "编辑",
+                    closeBtn: 0,
+                    shade: 0,
+                    shadeClose: false,
+                    area: ["500px", "430px"],
+                    skin: 'layui-layer-rim',
+                    content: $("#Editor"),
+                    btn: ['保存', '取消'],
+                    zIndex: 990,
+                    yes: function (index) {
+
+                        alert("保存");
+
+                    },
+                    cancel: function (index) {
+                        layer.close(index);
+                    }
+                });
+                app.$data.modifys = {
+                    Name : item.Name,
+                };
+            },
+            Delete:function (id) {
+                for (var i = 0; i<this.items.length;i++){
+                    if (this.items[i].Id == id){
+                        this.items.splice(i,1);
+                        break
+                    }
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

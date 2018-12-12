@@ -1,0 +1,240 @@
+<% include header %>
+<div id="app" class="wrapper wrapper-content animated fadeInRight" v-con>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>项目管理</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a href="#" class="btn btn-primary" @click="create()"><i class="fa fa-pencil"></i> 新建</a>
+                    </div>
+                </div>
+
+                <div class="ibox-content">
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th style="width:60px;">#</th>
+                            <th>用户名</th>
+                            <th>姓名</th>
+                            <th>手机</th>
+                            <th>邮箱</th>
+                            <th>部门</th>
+                            <th>角色名</th>
+                            <th style="width:280px;">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr v-for="(item, index) in items">
+                            <td>{{ index+1 }}</td>
+                            <td><a @click="view(item)">{{ item.Username }}</a></td>
+                            <td>{{ item.Name }}</td>
+                            <td>{{ item.Mobile }}</td>
+                            <td>{{ item.Email }}</td>
+                            <td>{{ item.Department }}</td>
+                            <td>{{ item.RoleName }}</td>
+                            <td style="display: none">{{ item.Password }}</td>
+                            <td>
+                                <a class="btn btn-success btn-xs" href="#" @click="modify(item)"><i class="fa fa-pencil">编辑</i> </a>
+                                <a class="btn btn-info btn-xs" href="#" @click="change(item)"><i class="fa fa-edit">修改密码</i> </a>
+                                <a class="btn btn-primary btn-xs"><i class="fa fa-code">锁定/解锁</i></a>
+                                <a class="btn btn-danger btn-xs" href="#" @click="Delete(item.Id)"><i class="fa fa-terminal">删除</i></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div style="text-align: right">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!--新增-->
+                    <div id="Added" style="padding:10px;display:none ;">
+                        <div class="col-md-11">
+                            <div class="form-group">
+                                <input type="hidden" v-model="modifys.Id" />
+                                <label class="col-sm-3 col-top col-ip control-label">用户名：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" v-model="modifys.Username" class="form-control" placeholder="请输入用户名">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 col-top col-rem control-label">密码：</label>
+                                <div class="col-sm-9">
+                                    <input type="password" v-model="modifys.Password" class="form-control" placeholder="请输入密码">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 col-top col-rem control-label">姓名：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" v-model="modifys.Name" class="form-control" placeholder="请输入姓名">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 col-top col-rem control-label">手机：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" v-model="modifys.Mobile" class="form-control" placeholder="请输入联系电话">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 col-top col-rem control-label">邮箱：</label>
+                                <div class="col-sm-9">
+                                    <input type="email" v-model="modifys.Email" class="form-control" placeholder="请输入邮箱">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 col-top col-rem control-label">部门：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" v-model="modifys.Department" class="form-control" placeholder="请输入部门">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 col-top col-ip control-label">角色名：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" v-model="modifys.RoleName" class="form-control" placeholder="请输入角色名">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--新增结束-->
+                    <!--编辑-->
+                    <div id="Editor" style="padding:10px;display:none ;">
+                        <div class="col-md-11">
+                            <div class="form-group">
+                                <input type="hidden" v-model="modifys.Id" />
+                                <label class="col-sm-3 col-top col-ip control-label">用户名：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" v-model="modifys.Username" class="form-control" placeholder="请输入用户名">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 col-top col-rem control-label">姓名：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" v-model="modifys.Name" class="form-control" placeholder="请输入姓名">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 col-top col-rem control-label">手机：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" v-model="modifys.Mobile" class="form-control" placeholder="请输入联系电话">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 col-top col-rem control-label">邮箱：</label>
+                                <div class="col-sm-9">
+                                    <input type="email" v-model="modifys.Email" class="form-control" placeholder="请输入邮箱">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 col-top col-rem control-label">部门：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" v-model="modifys.Department" class="form-control" placeholder="请输入部门">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 col-top col-ip control-label">角色名：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" v-model="modifys.RoleName" class="form-control" placeholder="请输入角色名">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--编辑结束-->
+                    <!--修改密码-->
+                    <div id="Pass" style="padding:10px;display:none ;">
+                        <div class="col-md-11">
+                            <div class="form-group">
+                                <input type="hidden" v-model="modifys.Id" />
+                                <label class="col-sm-3 col-top control-label">旧密码：</label>
+                                <div class="col-sm-9">
+                                    <input type="password" v-model="modifys.Password" class="form-control" placeholder="请输入旧密码">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 col-top control-label">新密码：</label>
+                                <div class="col-sm-9">
+                                    <input type="password" v-model="modifys.Password" class="form-control" placeholder="请输入新密码">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 col-top control-label">确认新密码：</label>
+                                <div class="col-sm-9">
+                                    <input type="password" v-model="modifys.Password" class="form-control" placeholder="请输入新密码">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--修改密码结束-->
+                    <!--查询详情-->
+                    <div id="Viewer" style="padding:10px;display:none ;">
+                        <div class="col-md-11">
+                            <div class="form-group">
+                                <input type="hidden" v-model="modifys.Id" />
+                                <label class="col-sm-3 control-label">用户名：</label>
+                                <div class="">&nbsp;
+                                    {{ this.activeItem.Username  }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 col-name control-label">姓名：</label>
+                                <div class="">&nbsp;
+                                    {{ this.activeItem.Name }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 col-name control-label">手机：</label>
+                                <div class="">&nbsp;
+                                    {{ this.activeItem.Mobile }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 col-name control-label">邮箱：</label>
+                                <div class="">&nbsp;
+                                    {{ this.activeItem.Email }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 col-name control-label">部门：</label>
+                                <div class="">&nbsp;
+                                    {{ this.activeItem.Department }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">角色名：</label>
+                                <div class="">&nbsp;
+                                    {{ this.activeItem.RoleName }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--查询详情结束-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script  src="/services/projects.js" type="text/javascript"></script>
+</body>
+</html>
