@@ -5,8 +5,10 @@
 				<img src="../assets/logo.png" alt="logo" class="logo">
 				<div class="nav">
 					<ul class="nav-list">
-						<li @click="logClick">登录</li>
-						<li @click="regClick">注册</li>
+						<li v-if="username!==''">{{username}}</li>
+						<li v-if="username!==''">退出</li>
+						<li @click="logClick" v-if="username===''">登录</li>
+						<li @click="regClick" v-if="username===''">注册</li>
 						<li @click="aboutClick">关于</li>
 					</ul>
 				</div>
@@ -22,13 +24,14 @@
 		</div>
 		
 		<my-dialog :is-show='isShowDialog' @on-close='closeDialog("isShowDialog")'>
-			<p>holle About us</p>
+			<p class="about-gy">本报告在调研数据的基础上，采用定性与定量相结合的方式深入分析了专车市场发展的驱动因素与阻碍因素、专车市场背后的产业格局、专车企业的竞争格局、用户对专车市场的依赖程度、专车对其他交通工具运力的补充效应等，通过这五个章节的研究反映专车市场的发展态势和面临的问题。报告力求客观、深入、准确地反映中国专车市场发展情况，为政府、企事业单位和社会各界提供决策依据。 </p>
+			
 		</my-dialog>
 		<my-dialog :is-show='isShowLogDialog' @on-close='closeDialog("isShowLogDialog")'>
-			<p>Welcome to the login page</p>
+			<login-from @has-log='successLog'></login-from>
 		</my-dialog>
 		<my-dialog :is-show='isShowRegDialog' @on-close='closeDialog("isShowRegDialog")'>
-			<p>Welcome to the registration page</p>
+			<res-from></res-from>
 		</my-dialog>
 		
 	</div>
@@ -36,15 +39,20 @@
 
 <script>
 	import Dialog from './bash/dialog.vue'
+	import LoginFrom from './bash/login.vue'
+	import ResFrom from './bash/registered.vue'
 	export default {
 		components:{
-			myDialog:Dialog
+			myDialog:Dialog,
+			LoginFrom,
+			ResFrom,
 		},
 		data() {
 			return {
 				isShowDialog:false,
 				isShowLogDialog:false,
-				isShowRegDialog:false
+				isShowRegDialog:false,
+				username:''
 				
 			};
 		},
@@ -60,6 +68,10 @@
 			},
 			closeDialog(attr){
 				this[attr] = false 
+			},
+			successLog(data){
+				this.closeDialog(isShowLogDialog)
+				this.username = data.username
 			}
 		}
 	}
@@ -99,7 +111,7 @@
 	}
 	
 	.nav{
-		width: 300px;
+		
 		float: right;
 	}
 	.nav-list{
@@ -132,7 +144,44 @@
 		background: #ccc;
 		text-align: center;
 		font-size: 16px;
-		
 	}
-	
+	.log-name{
+		margin-bottom:26px;
+	}
+	.log-name span,.log-pas span{
+		font-size: 16px;
+		font-weight: bold;
+		color: #41b883;
+	}
+	.log-name input,.log-pas input{
+		width:200px;
+		height: 25px;
+		line-height: 25px;
+		padding-left: 10px;
+		outline: none;
+		border: 2px solid #41b883;
+		color: #333;
+	}
+	.log-btn{			width: 80px;
+		height: 35px;
+		line-height: 35px;
+		background: #41b883;
+		color: #fff;
+		cursor: pointer;
+		font-size: 18px;
+		font-weight: bold;
+		text-align: center;
+		letter-spacing: 2px;
+		margin-top:26px;
+		margin-left: 20px;
+	}
+	.log-name .g-error,.log-pas .g-error{
+		color: #FF0000;
+		padding-left: 10px;
+	}
+	.about-gy{
+		text-indent: 2em;
+		color: #333333;
+		line-height: 30px;
+	}
 </style>

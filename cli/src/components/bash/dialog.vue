@@ -4,7 +4,7 @@
       <div class="dialog-cover"  v-if="isShow" @click="closeMyself"></div>
       <transition name="drop">
         <div class="dialog-content"  v-if="isShow">
-          <p class="dialog-close" @click="closeMyself">x</p>
+          <p class="dialog-close" @click="closeMyself">	&#10006;</p>
           <slot>empty</slot>
         </div>
       </transition>
@@ -72,18 +72,19 @@ export default {
   left: 50%;
   margin-left: -25%;
   z-index: 10;
-  border: 2px solid #464068;
+  border: 2px solid #41b883;
   padding: 2%;
   line-height: 1.6;
 }
 .dialog-close {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  width: 20px;
-  height: 20px;
-  text-align: center;
-  cursor: pointer;
+	position: absolute;
+	right: 5px;
+	top: 0px;
+	width: 20px;
+	height: 20px;
+	font-size: 18px;
+	text-align: center;
+	cursor: pointer;
 }
 .dialog-close:hover {
   color: #4fc08d;
