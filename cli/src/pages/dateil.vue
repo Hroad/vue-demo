@@ -48,10 +48,10 @@
 					}
 				],
 				imgMap: {
-					'/detail/count': require("../assets/img/1.png"),
-					'/detail/forecast': require("../assets/img/2.png"),
-					'/detail/analysis': require("../assets/img/3.png"),
-					'/detail/publish': require("../assets/img/4.png")
+					'/dateil/count': require("../assets/img/1.png"),
+					'/dateil/forecast': require("../assets/img/2.png"),
+					'/dateil/analysis': require("../assets/img/3.png"),
+					'/dateil/publish': require("../assets/img/4.png")
 				}
 			}
 		},
