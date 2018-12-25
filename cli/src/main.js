@@ -9,9 +9,11 @@ import vueResource from 'vue-resource'
 import reset from './css/reset.min.css'
 import layout from './components/layout.vue'
 import IndexPage from './pages/index.vue'
-
-
-
+import DateilPage from './pages/dateil.vue'
+import countPage from './pages/dateilPage/count.vue'
+import forecastPage from './pages/dateilPage/forecast.vue'
+import analysisPage from './pages/dateilPage/analysis.vue'
+import publishPage from './pages/dateilPage/publish.vue'
 
 
 
@@ -27,7 +29,29 @@ const router = new vueRouter({
 			{
 				path:'/',
 				component:IndexPage,
-			}
+			},
+			{
+				path:'/dateil',
+				component:DateilPage,
+				children:[
+					{
+						path:'/dateil/count',
+						component:countPage,
+					},
+					{
+						path:'/dateil/forecast',
+						component:forecastPage,
+					},
+					{
+						path:'/dateil/analysis',
+						component:analysisPage,
+					},
+					{
+						path:'/dateil/publish',
+						component:publishPage,
+					}
+				]
+			},
 		]
 })
 
