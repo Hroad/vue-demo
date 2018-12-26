@@ -2,7 +2,10 @@
 	<div>
 		<div class="app-header">
 			<div class="log-nav">
-				<img src="../assets/logo.png" alt="logo" class="logo">
+				<router-link :to="{path:'/'}">
+					<img src="../assets/logo.png" alt="logo" class="logo">
+				</router-link>
+
 				<div class="nav">
 					<ul class="nav-list">
 						<li v-if="username!==''">{{username}}</li>

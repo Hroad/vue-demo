@@ -33,6 +33,7 @@ const router = new vueRouter({
 			{
 				path:'/dateil',
 				component:DateilPage,
+				redirect:'/dateil/count',
 				children:[
 					{
 						path:'/dateil/count',

@@ -10,7 +10,7 @@
                   购买数量：
               </div>
               <div class="sales-board-line-right">
-				 
+									
               </div>
           </div>
           <div class="sales-board-line">
@@ -18,7 +18,7 @@
                   产品类型：
               </div>
               <div class="sales-board-line-right">
-                 
+                  <Selection :selections="productTypes"></Selection>
               </div>
           </div>
           <div class="sales-board-line">
@@ -42,7 +42,7 @@
                   总价：
               </div>
               <div class="sales-board-line-right">
-                  {{ price }} 元
+                  元
               </div>
           </div>
           <div class="sales-board-line">
@@ -81,10 +81,32 @@
 </template>
 
 <script>
+	import Selection from '../../components/bash/selection.vue'
+	
 	export default {
+		components:{
+			Selection,
+		},
 		data() {
 			return {
-				
+				productTypes:[
+					{
+						lable:'入门类',
+						value:0
+					},
+					{
+						lable:'基础类',
+						value:1
+					},
+					{
+						lable:'中级类',
+						value:2
+					},
+					{
+						lable:'高级类',
+						value:3
+					}
+				]
 			};
 		}
 	}

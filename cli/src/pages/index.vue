@@ -39,7 +39,7 @@
 					<div class="txt">
 						<h3>{{ boxs.title }}</h3>
 						<p>{{ boxs.introduction }}</p>
-						<div class="btn">立即购买</div>
+						<div class="btn"><a :href="boxs.urlHref">立即购买</a></div>
 					</div>
 				</div>
 			</div>
@@ -63,22 +63,22 @@
 					{
 						src:require('../assets/slideShow/pic1.jpg'),
 						title:'xxx1',
-						href:'http://www.baidu.com'
+						href:'/dateil/count'
 					},
 					{
 						src:require('../assets/slideShow/pic2.jpg'),
 						title:'xxx2',
-						href:'http://www.baidu.com'
+						href:'/dateil/forecast'
 					},
 					{
 						src:require('../assets/slideShow/pic3.jpg'),
 						title:'xxx3',
-						href:'http://www.baidu.com'
+						href:'/dateil/analysis'
 					},
 					{
 						src:require('../assets/slideShow/pic4.jpg'),
 						title:'xxx4',
-						href:'http://www.baidu.com'
+						href:'/dateil/publish'
 					}
 				],
 				productsList:{
@@ -87,20 +87,20 @@
 						list:[
 							{
 								name:'数据统计',
-								url:'http://starcraft.com'
+								url:'/dateil/count'
 							},
 							{
 								name:'数据预测',
-								url:'http://warcraft.com'
+								url:'/dateil/forecast'
 							},
 							{
 								name:'流量分析',
-								url:'http://overwatch.com',
+								url:'/dateil/analysis',
 								hot:true
 							},
 							{
 								name:'广告发布',
-								url:'http://hearstone.com'
+								url:'/dateil/publish'
 							}
 						]
 					},
@@ -153,25 +153,29 @@
 						title:'开放产品',
 						introduction:'开放产品是一款开放产品',
 						boxImgSrc:require('../assets/img/1.png'),
-						salaout:false
+						salaout:false,
+						urlHref:'/dateil/count'
 					},
 					{
 						title:'品牌营销',
 						introduction:'品牌营销能帮助你的产品更好的找到定位',
 						boxImgSrc:require('../assets/img/3.png'),
-						salaout:false
+						salaout:false,
+						urlHref:'/dateil/analysis'
 					},
 					{
 						title:'使命必达',
 						introduction:'使命必达快速迭代永远保持最前端的速度',
 						boxImgSrc:require('../assets/img/2.png'),
-						salaout:false
+						salaout:false,
+						urlHref:'/dateil/forecast'
 					},
 					{
 						title:'勇攀高峰',
 						introduction:'帮你勇闯高峰，到达事业的顶峰',
 						boxImgSrc:require('../assets/img/4.png'),
-						salaout:false
+						salaout:false,
+						urlHref:'/dateil/publish'
 					}					
 				]				
 				
@@ -311,5 +315,8 @@
 		font-weight: bold;
 		cursor: pointer;
 	}
-	
+	.btn a{
+		color: #fff;
+		display: block;
+	}
 </style>

@@ -10,7 +10,7 @@
                   产品类型：
               </div>
               <div class="sales-board-line-right">
-                  <v-chooser :selections="buyTypes"></v-chooser>
+                  
               </div>
           </div>
           <div class="sales-board-line">
@@ -18,7 +18,7 @@
                   适用地区：
               </div>
               <div class="sales-board-line-right">
-                  <v-selection :selections="districts"></v-selection>
+                  
               </div>
           </div>
           <div class="sales-board-line">
