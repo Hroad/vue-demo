@@ -26,7 +26,7 @@
                   有效时间：
               </div>
               <div class="sales-board-line-right">
-                  
+                  <radioBtn :radioBtn="vaTimes"></radioBtn>
               </div>
           </div>
           <div class="sales-board-line">
@@ -34,7 +34,7 @@
                   产品版本：
               </div>
               <div class="sales-board-line-right">
-                 
+                 <checkBtn :checkBtn='versions'></checkBtn>
               </div>
           </div>
           <div class="sales-board-line">
@@ -42,7 +42,7 @@
                   总价：
               </div>
               <div class="sales-board-line-right">
-                  元
+                  658 元
               </div>
           </div>
           <div class="sales-board-line">
@@ -82,30 +82,74 @@
 
 <script>
 	import Selection from '../../components/bash/selection.vue'
+	import radioBtn from '../../components/bash/radiobtn.vue'
+	import checkBtn from '../../components/bash/checkbtn.vue'
 	
 	export default {
 		components:{
 			Selection,
+			radioBtn,
+			checkBtn,
 		},
 		data() {
 			return {
 				productTypes:[
 					{
-						lable:'入门类',
+						lable:'入门版',
 						value:0
 					},
 					{
-						lable:'基础类',
+						lable:'基础版',
 						value:1
 					},
 					{
-						lable:'中级类',
+						lable:'中级版',
 						value:2
 					},
 					{
-						lable:'高级类',
+						lable:'高级版',
 						value:3
 					}
+				],
+				vaTimes:[
+					{
+						lable:'半年',
+						value:0
+					},
+					{
+						lable:'一年',
+						value:1
+					},
+					{
+						lable:'两年',
+						value:2
+					},
+					{
+						lable:'三年',
+						value:3
+					},
+				],
+				versions:[
+					{
+						lable:'游客版',
+						value:0
+					},
+					{
+						lable:'客户版',
+						value:1
+					},
+					{
+						lable:'代理商版',
+						value:2
+					},
+					{
+						lable:'企业版',
+						value:3
+					},
+					{
+						lable:'专家版',
+						value:4
+					},
 				]
 			};
 		}

@@ -164,4 +164,11 @@
     border: 1px solid #f0f2f5;
     padding: 15px;
 }
+.button {
+    background: #4fc08d;
+    color: #fff;
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+}
 </style>

@@ -10,7 +10,7 @@
                   购买数量：
               </div>
               <div class="sales-board-line-right">
-                  <v-counter :max="100" :min="20"></v-counter>
+                  
               </div>
           </div>
           <div class="sales-board-line">
@@ -18,7 +18,7 @@
                   媒介：
               </div>
               <div class="sales-board-line-right">
-                  <v-mul-chooser :selections="versionList"></v-mul-chooser>
+                  <checkBtn :checkBtn='medTypes'></checkBtn>
               </div>
           </div>
           <div class="sales-board-line">
@@ -58,15 +58,44 @@
 </template>
 
 <script>
+	import checkBtn from '../../components/bash/checkbtn.vue'
 	export default {
+		components:{
+			checkBtn,
+		},
 		data() {
 			return {
-				
+				medTypes:[
+					{
+						lable:'纸质报告',
+						value:0
+					},
+					{
+						lable:'pdf',
+						value:1
+					},
+					{
+						lable:'页面报告',
+						value:2
+					},
+					{
+						lable:'邮件',
+						value:3
+					},
+					{
+						lable:'word',
+						value:4
+					},
+					{
+						lable:'excel',
+						value:5
+					}
+				],
 			};
 		}
 	}
 </script>
 
 <style>
-
+	
 </style>

@@ -10,7 +10,7 @@
                   产品类型：
               </div>
               <div class="sales-board-line-right">
-                  
+					<radioBtn :radioBtn="buyTypes"></radioBtn>				
               </div>
           </div>
           <div class="sales-board-line">
@@ -18,7 +18,7 @@
                   适用地区：
               </div>
               <div class="sales-board-line-right">
-                  
+                  <Selection :selections="regions"></Selection>
               </div>
           </div>
           <div class="sales-board-line">
@@ -244,10 +244,63 @@
 </template>
 
 <script>
+	import radioBtn from '../../components/bash/radiobtn.vue'
+	import Selection from '../../components/bash/selection.vue'
 	export default {
+		components:{
+			radioBtn,
+			Selection,
+		},
 		data() {
 			return {
-				
+				buyTypes:[
+					{
+						lable:'红色版',
+						value:0
+					},
+					{
+						lable:'绿色版',
+						value:1
+					},
+					{
+						lable:'紫色版',
+						value:2
+					},
+					{
+						lable:'灰色版',
+						value:3
+					}
+				],
+				regions:[
+					{
+						lable:'北京',
+						value:0
+					},
+					{
+						lable:'上海',
+						value:1
+					},
+					{
+						lable:'深圳',
+						value:2
+					},
+					{
+						lable:'广州',
+						value:3
+					},
+					{
+						lable:'武汉',
+						value:4
+					},
+					{
+						lable:'重庆',
+						value:5
+					},
+					{
+						lable:'天津',
+						value:6
+					}
+				]
 			};
 		}
 	}

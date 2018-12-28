@@ -73,6 +73,7 @@
 				this[attr] = false 
 			},
 			successLog(data){
+				console.log(data)
 				this.closeDialog(isShowLogDialog)
 				this.username = data.username
 			}

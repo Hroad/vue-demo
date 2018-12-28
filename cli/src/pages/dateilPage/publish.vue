@@ -18,7 +18,7 @@
                   行业：
               </div>
               <div class="sales-board-line-right">
-                  <v-selection :selections="tradeList"></v-selection>
+                  <Selection :selections="industrys"></Selection>
               </div>
           </div>
           <div class="sales-board-line">
@@ -26,7 +26,7 @@
                   产品版本：
               </div>
               <div class="sales-board-line-right">
-                  <v-mul-chooser :selections="versionList"></v-mul-chooser>
+                  <checkBtn :checkBtn="putversions"></checkBtn>
               </div>
           </div>
           <div class="sales-board-line">
@@ -252,10 +252,59 @@
 </template>
 
 <script>
+	import Selection from '../../components/bash/selection.vue'
+	import checkBtn from '../../components/bash/checkbtn.vue'
 	export default {
+		components:{
+			Selection,
+			checkBtn
+		},
 		data() {
 			return {
-				
+				industrys:[
+					{
+						lable:'出版业',
+						value:0
+					},
+					{
+						lable:'媒体',
+						value:1
+					},
+					{
+						lable:'金融',
+						value:2
+					},
+					{
+						lable:'媒体',
+						value:3
+					},
+					{
+						lable:'游戏',
+						value:4
+					},
+					{
+						lable:'互联网',
+						value:5
+					},
+				],
+				putversions:[
+					{
+						lable:'初级版',
+						value:0
+					},
+					{
+						lable:'中级版',
+						value:1
+					},
+					{
+						lable:'高级版',
+						value:2
+					},
+					{
+						lable:'专家版',
+						value:3
+					},
+				]
 			};
 		}
 	}
