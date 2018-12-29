@@ -10,7 +10,7 @@
                   购买数量：
               </div>
               <div class="sales-board-line-right">
-                  
+                  <numbers :max="50" :min="20"></numbers>
               </div>
           </div>
           <div class="sales-board-line">
@@ -59,9 +59,11 @@
 
 <script>
 	import checkBtn from '../../components/bash/checkbtn.vue'
+	import numbers from '../../components/bash/numbers.vue'
 	export default {
 		components:{
 			checkBtn,
+			numbers,
 		},
 		data() {
 			return {

@@ -10,7 +10,7 @@
                   购买数量：
               </div>
               <div class="sales-board-line-right">
-									
+					 <numbers :max="5" :min="1"></numbers>				
               </div>
           </div>
           <div class="sales-board-line">
@@ -84,12 +84,13 @@
 	import Selection from '../../components/bash/selection.vue'
 	import radioBtn from '../../components/bash/radiobtn.vue'
 	import checkBtn from '../../components/bash/checkbtn.vue'
-	
+	import numbers from '../../components/bash/numbers.vue'
 	export default {
 		components:{
 			Selection,
 			radioBtn,
 			checkBtn,
+			numbers
 		},
 		data() {
 			return {

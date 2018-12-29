@@ -69,7 +69,7 @@
 					alert('用户名或密码格式错误!')
 				}else{
 					alert('登录成功！')
-					this.$http.post('api/login')
+					this.$http.get('api/login')
 					.then((res) => {
 						this.$emit('has-log', res.data)
 					}, (error) => {
