@@ -51,6 +51,7 @@
 </template>
 
 <script>
+	
 	import slideShow from '../components/slide.vue'
 	export default {
 		components:{

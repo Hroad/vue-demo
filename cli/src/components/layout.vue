@@ -41,9 +41,12 @@
 </template>
 
 <script>
+	
 	import Dialog from './bash/dialog.vue'
 	import LoginFrom from './bash/login.vue'
 	import ResFrom from './bash/registered.vue'
+	
+	
 	export default {
 		components:{
 			myDialog:Dialog,
