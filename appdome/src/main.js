@@ -10,6 +10,8 @@ import router from './router'
 // 引入normalize.css
 import normalize from 'normalize.css'
 
+
+
 // 按需导入 mint-ui 的组件
 import { Header, Swipe, SwipeItem } from 'mint-ui'
 import 'mint-ui/lib/style.css'

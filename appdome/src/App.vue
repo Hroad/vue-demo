@@ -41,6 +41,7 @@ export default {
 <style>
 .app-container{
 	padding-top: 3rem;
+	padding-bottom: 5rem;
 	overflow-x: hidden;
 }
 .mui-bar{
