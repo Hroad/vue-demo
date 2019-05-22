@@ -3,16 +3,16 @@
 		<div class="news-list">
 			<ul class="mui-table-view">
 				<li class="mui-table-view-cell mui-media" v-for="itme in newsList" :key='itme.id'>
-					<a href="javascript:;">
+					<router-link :to=" '/home/newsInfo/' + itme.id ">
 						<img class="mui-media-object mui-pull-left" :src="itme.img_url">
 						<div class="mui-media-body">
 							<h3>{{ itme.title }}</h3>
 							<p class='mui-ellipsis'>
 								<span>发布时间：{{ itme.add_time | DateFromet }}</span>
-								<span>点击：{{ itme.click }}次</span>
+								<span>点击：{{ itme.click }}  次</span>
 							</p>
 						</div>
-					</a>
+					</router-link>
 				</li>
 			</ul>
 		</div>
@@ -20,8 +20,8 @@
 </template>
 
 <script>
-	import { Toast } from 'mint-ui';
-
+	// 导入mint-ui 的报错弹窗模块
+	import { Toast } from 'mint-ui'
 	
 	export default {
 		data() {
@@ -38,6 +38,7 @@
 					if(res.body.status === 0){
 						// 成功执行
 						this.newsList = res.body.message
+						
 					}else{
 						// 失败执行
 						Toast('获取新闻列表数据失败！');
@@ -52,6 +53,9 @@
 
 	.mui-table-view h3{
 		font-size: 0.6rem;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
 	}
 	.mui-table-view-cell{
 		padding: 1rem;

@@ -13,17 +13,33 @@ import normalize from 'normalize.css'
 
 
 // 按需导入 mint-ui 的组件
-import { Header, Swipe, SwipeItem } from 'mint-ui'
+import { Header, Swipe, SwipeItem, Button  } from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.component(Header.name,Header)
 Vue.component(Swipe.name, Swipe)
 Vue.component(SwipeItem.name, SwipeItem)
+Vue.component(Button.name, Button)
 
 // 引入 mui 组件
 import './bli/mui/dist/css/mui.min.css'
 // 引入 mui 扩展字体图标
 import './bli/mui/dist/css/icons-extra.css'
 import './bli/mui/dist/fonts/mui-icons-extra.ttf'
+
+// 定义全局时间过滤器
+Vue.filter('DateFromet',function(){
+	var dt = new Date()
+	var y = dt.getFullYear()
+	var m = (dt.getMonth() + 1).toString().padStart(2,'0')
+	var d = dt.getDate().toString().padStart(2,'0')
+	var hh = dt.getHours().toString().padStart(2,'0')
+	var mm = dt.getMinutes().toString().padStart(2,'0')
+	var dd = dt.getSeconds().toString().padStart(2,'0')
+	return `${y}-${m}-${d} ${hh}:${mm}:${dd}`
+	
+})
+
+
 
 Vue.config.productionTip = false
 //关闭生产模式下给出的提示
