@@ -11,11 +11,14 @@ import shopcartCon from '../components/tabbar/shopcartCon.vue'
 import searchCon from '../components/tabbar/searchCon.vue'
 import newsList from '../components/content/newsList.vue'
 import newsInfo from '../components/content/newsInfo.vue'
+import photoList from '../components/content/photoList.vue'
 
 // 安装vue-resource
 Vue.use(vueResource)
 // 设置全局请求根目录
 Vue.http.options.root = 'http://www.liulongbin.top:3005';
+// 全局设置post表单提交数据格式
+Vue.http.options.emulateJSON = true;
 
 Vue.use(Router)
 export default new Router({
@@ -29,6 +32,7 @@ export default new Router({
 			{ path : '/search' , component : searchCon },
 			{ path : '/home/newsList' , component : newsList },
 			{ path : '/home/newsInfo/:id' , component : newsInfo },
+			{ path : '/home/photoList' , component : photoList },
   ],
 	linkActiveClass: 'mui-active'   //添加高亮的class类
 })

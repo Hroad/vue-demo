@@ -79,7 +79,7 @@
 		justify-content: space-between;
 	}
 	.news-content p{
-		font-size: 0.8rem;
+		font-size: 1.3rem;
 	}
 	.news-content img{
 		width: 100%;

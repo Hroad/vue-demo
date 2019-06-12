@@ -11,14 +11,19 @@ import router from './router'
 import normalize from 'normalize.css'
 
 
-
 // 按需导入 mint-ui 的组件
-import { Header, Swipe, SwipeItem, Button  } from 'mint-ui'
+// import { Header, Swipe, SwipeItem, Button, Lazyload } from 'mint-ui'
+// import 'mint-ui/lib/style.css'
+// Vue.component(Header.name,Header)
+// Vue.component(Swipe.name, Swipe)
+// Vue.component(SwipeItem.name, SwipeItem)
+// Vue.component(Button.name, Button)
+// Vue.use(Lazyload)
+import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
-Vue.component(Header.name,Header)
-Vue.component(Swipe.name, Swipe)
-Vue.component(SwipeItem.name, SwipeItem)
-Vue.component(Button.name, Button)
+Vue.use(MintUI)
+
+
 
 // 引入 mui 组件
 import './bli/mui/dist/css/mui.min.css'
