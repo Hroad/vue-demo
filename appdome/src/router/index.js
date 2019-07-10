@@ -12,6 +12,9 @@ import searchCon from '../components/tabbar/searchCon.vue'
 import newsList from '../components/content/newsList.vue'
 import newsInfo from '../components/content/newsInfo.vue'
 import photoList from '../components/content/photoList.vue'
+import photoInfo from '../components/content/photoInfo.vue'
+import goodsList from '../components/content/goodsList.vue'
+import goodsInfo from '../components/content/goodsInfo.vue'
 
 // 安装vue-resource
 Vue.use(vueResource)
@@ -33,6 +36,9 @@ export default new Router({
 			{ path : '/home/newsList' , component : newsList },
 			{ path : '/home/newsInfo/:id' , component : newsInfo },
 			{ path : '/home/photoList' , component : photoList },
+			{ path : '/home/photoInfo/:id' , component : photoInfo },
+			{ path : '/home/goodsList' , component : goodsList },
+			{ path : '/home/goodsInfo/:id' , component : goodsInfo },
   ],
 	linkActiveClass: 'mui-active'   //添加高亮的class类
 })

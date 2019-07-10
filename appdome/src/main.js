@@ -44,7 +44,9 @@ Vue.filter('DateFromet',function(){
 	
 })
 
-
+// 导入vue-preview缩略图插件
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview)
 
 Vue.config.productionTip = false
 //关闭生产模式下给出的提示

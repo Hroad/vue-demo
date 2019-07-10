@@ -5,7 +5,7 @@
 			<div id="slider" class="mui-slider">
 				<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
 					<div class="mui-scroll">
-						<a :class="['mui-control-item',itme.id == 0 ? ' mui-active' : '']" v-for="itme in cates" :key="itme.id" @click="getAllPhotoList(itme.id)">
+						<a :class="['mui-control-item',itme.id == 0 ? ' mui-active' : '']" v-for="itme in cates" :key="itme.id" @tap="getAllPhotoList(itme.id)">
 							{{ itme.title }}
 						</a>
 					</div>
@@ -15,13 +15,13 @@
 		<!-- 图片列表区域 -->
 		<div class="photo-list">
 			<ul>
-			  <li v-for="item in list" :key="item.id">
+			  <router-link v-for="item in list" :key="item.id" :to="'/home/photoInfo/' + item.id" tag="li">
 				<img v-lazy="item.img_url">
 				<div class="info">
 					<div class="info-title">{{ item.title }}</div>
 					<div class="info-txt">{{ item.zhaiyao }}</div>
 				</div>
-			  </li>
+			  </router-link>
 			</ul>
 		</div>
 	</div>
@@ -68,7 +68,7 @@
 	}
 </script>
 
-<style>
+<style scoped="scoped">
 	*{
 		touch-action: pan-y;
 		margin: 0;
@@ -82,8 +82,7 @@
 	}
 	.mui-control-item{
 		font-size: 1.3rem;
-		font-weight: bold;
-		
+		font-weight: bold;	
 	}
 	.mui-segmented-control.mui-scroll-wrapper .mui-control-item{
 		padding: 0 12px;
@@ -108,7 +107,7 @@
 		margin-bottom: 1rem;
 	}
 	.photo-list ul li img{
-		box-shadow: 0 0 6px #ccc;
+		box-shadow: 0 0 8px #ccc;
 		border-radius: 5px;
 		vertical-align: middle;
 	}

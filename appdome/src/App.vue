@@ -1,7 +1,9 @@
 <template>
   <div class="app-container">
 		<!-- 头部   header 区域-->
-		<mt-header fixed title="在线商城app"></mt-header>
+		<mt-header fixed title="在线商城app">
+			<mt-button icon="back" slot="left" @click="goBtn()">返回</mt-button>
+		</mt-header>
 		
 		<!-- 中间部分  content	 区域-->
 		<transition>
@@ -34,7 +36,11 @@
 
 <script>
 export default {
-  
+	methods: {
+		goBtn(){
+			this.$router.go(-1)
+		}
+	},
 }
 </script>
 
@@ -92,6 +98,11 @@ export default {
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.mint-header .mint-button{
+	outline: none;
+	background: none;
 }
 
 </style>
