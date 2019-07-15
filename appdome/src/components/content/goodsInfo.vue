@@ -17,21 +17,27 @@
 			<div class="mui-card-content">
 				<div class="mui-card-content-inner">
 					<div class="price">
-						<span></span>
-						<span></span>
+						<span class="old">市场价：<del>￥2500</del></span>
+						<span class="new">销售价：<span class="money">￥1500</span></span>
 					</div>
+					<numbox></numbox>
+					<mt-buttom></mt-buttom>
 				</div>
 			</div>
 		</div>
 		
 		<div class="mui-card">
-			<div class="mui-card-header">页眉</div>
+			<div class="mui-card-header">商品参数</div>
 			<div class="mui-card-content">
 				<div class="mui-card-content-inner">
-					包含页眉页脚的卡片，页眉常用来显示面板标题，页脚用来显示额外信息或支持的操作（比如点赞、评论等）
+					<p>商品货号：</p>
+					<p>库存情况：</p>
+					<p>上架时间：</p>
 				</div>
 			</div>
-			<div class="mui-card-footer">页脚</div>
+			<div class="mui-card-footer">
+				
+			</div>
 		</div>
 		
 	</div>
@@ -40,6 +46,7 @@
 <script>
 	// 导入mint-ui 的报错弹窗模块
 	import { Toast } from 'mint-ui'
+	import numbox from '../comment/numbox.vue'
 	
 	export default{
 		data() {
@@ -62,6 +69,10 @@
 				})
 			}
 		},
+		
+		components: {
+			'numbox':numbox
+		},
 	}
 </script>
 
@@ -82,11 +93,27 @@
 		width: auto;
 		height: 100%;
 	}
-	.mui-card-content-inner .mint-swipe-indicator{
+	.mui-card .mui-card-content-inner .mint-swipe-indicator{
 		background: #f00;
 		opacity: 1;
 	}
-	.mint-swipe-indicator.is-active{
+	.mui-card .mint-swipe-indicator.is-active{
 		background: #26a2ff;
 	}
+	.price{
+		margin-bottom: 0.5rem;
+	}
+	.price span{
+		color: #6D6D72;
+		font-size: 1.3rem;
+	}
+	.price span{
+		margin-right: 2.5rem;
+	}
+	.price .money{
+		color: #f00;
+		font-weight: bold;
+		font-size: 1.5rem;
+	}
+	
 </style>

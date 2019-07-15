@@ -84,7 +84,7 @@ body{
 .mint-swipe-item {
 	color: #fff;
 }
-.mint-swipe-item:first-child {
+/* .mint-swipe-item:first-child {
 	background: #f00;
 }
 .mint-swipe-item:nth-child(2) {
@@ -92,7 +92,7 @@ body{
 }
 .mint-swipe-item:last-child {
 	background: #00f;
-}
+} */
 .mint-swipe-item img {
 	width: 100%;
 	height: 100%;
